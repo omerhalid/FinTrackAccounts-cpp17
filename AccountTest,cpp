@@ -1,0 +1,61 @@
+#include <gtest/gtest.h>
+#include "Account.h"
+
+// Mock classes if needed for more complex tests
+// class MockAccount : public Account { ... };
+
+TEST(AccountTest, WithdrawCheckingAccount) {
+    CheckingAccount account(1000, "TestUser");
+    account.withdraw(100);
+    EXPECT_EQ(account.printBalance(), 900);
+}
+
+TEST(AccountTest, DepositCheckingAccount) {
+    CheckingAccount account(1000, "TestUser");
+    account.deposit(100);
+    EXPECT_EQ(account.printBalance(), 1100);
+}
+
+TEST(AccountTest, GetNameCheckingAccount) {
+    CheckingAccount account(1000, "TestUser");
+    EXPECT_EQ(account.getName(), "TestUser");
+}
+
+TEST(AccountTest, WithdrawSavingsAccount) {
+    SavingsAccount account(1000, "TestUser");
+    account.withdraw(100);
+    EXPECT_EQ(account.printBalance(), 900);
+}
+
+TEST(AccountTest, DepositSavingsAccount) {
+    SavingsAccount account(1000, "TestUser");
+    account.deposit(100);
+    EXPECT_EQ(account.printBalance(), 1100);
+}
+
+TEST(AccountTest, GetNameSavingsAccount) {
+    SavingsAccount account(1000, "TestUser");
+    EXPECT_EQ(account.getName(), "TestUser");
+}
+
+TEST(AccountTest, WithdrawTrustAccount) {
+    TrustAccount account(1000, "TestUser");
+    account.withdraw(100);
+    EXPECT_EQ(account.printBalance(), 900);
+}
+
+TEST(AccountTest, DepositTrustAccount) {
+    TrustAccount account(1000, "TestUser");
+    account.deposit(100);
+    EXPECT_EQ(account.printBalance(), 1100);
+}
+
+TEST(AccountTest, GetNameTrustAccount) {
+    TrustAccount account(1000, "TestUser");
+    EXPECT_EQ(account.getName(), "TestUser");
+}
+
+int main(int argc, char **argv) {
+    ::testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
+}
